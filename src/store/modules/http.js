@@ -4,38 +4,26 @@ import apiURL from "@/environment.js";
 export default {
 
     actions: {
-        async EXPORT_REPORT_REQUEST({ dispatch }, { startDate, endDate }) {
+        GET_INVESTMENTS({ dispatch, commit }) {
             return new Promise((resolve) => {
-                ApiService.post(`${apiURL}/export-converter-utilization-data`, { start_date: startDate, end_date: endDate })
-                    .then(resp => {
-                        resolve(resp)
+                ApiService.post(`http://localhost:8002/get-investments`, {})
+                    .then(response => {
+                        commit("CLEAR_INVESTMENT_LIST")
+                        dispatch("ADD_INVESTMENT_LIST", response.data.investments_list)
+                        resolve(response)
                     })
-                    .catch(err => dispatch('ADD_ERROR_MESSAGE', err.response.data.message))
-            });
-        },
-        EXPORT_CATEGORIES({ commit }) {
-            return new Promise((resolve) => {
-                ApiService.post(`${apiURL}/export-categories`, {})
-                    .then(response => resolve(response))
                     .catch(err => commit("SET_ERROR_BY_CODE", err))
             });
         },
-        UPDATE_CATEGORIES({ dispatch, commit }, data) {
-            ApiService.post(`${apiURL}/refresh-categories-map`, data)
+        LOAD_STOCKS({ dispatch, commit }, data) {
+            ApiService.post(`${apiURL}/load-stocks`, data)
                 .then(res => dispatch("ADD_INFO_MESSAGE", res.data.message))
                 .catch(err => commit("SET_ERROR_BY_CODE", err));
         },
-        EXPORT_DIMENSIONS({ commit }) {
-            return new Promise((resolve) => {
-                ApiService.post(`${apiURL}/export-categories-dimensions`, {})
-                    .then(response => resolve(response))
-                    .catch(err => commit("SET_ERROR_BY_CODE", err))
-            });
-        },
-        UPDATE_DIMENSIONS({ dispatch, commit }, data) {
-            ApiService.post(`${apiURL}/refresh-categories-dimensions`, data)
+        LOAD_INVESTMENTS({ dispatch, commit }, data) {
+            ApiService.post(`${apiURL}/load-investments`, data)
                 .then(res => dispatch("ADD_INFO_MESSAGE", res.data.message))
                 .catch(err => commit("SET_ERROR_BY_CODE", err));
-        }
+        },
     },
 }

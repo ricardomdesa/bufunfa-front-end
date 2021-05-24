@@ -10,17 +10,17 @@
             <th><abbr title="Valor medio">Valor medio</abbr></th>
             <th><abbr title="Quantidade">Qtde</abbr></th>
             <th><abbr title="Preco atual">Valor Atual</abbr></th>
-            <th><abbr title="Valor total">Valor total</abbr></th>
+            <th><abbr title="Rendimento">Rendimento</abbr></th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
+          <tr v-for="investment in getInvestmentList" :key="investment">
+            <td>{{ investment.corretora }}</td>
+            <td>{{ investment.codigo }}</td>
+            <td>{{ investment.valor_medio }}</td>
+            <td>{{ investment.quantidade }}</td>
+            <td>{{ investment.current_stock_price }}</td>
+            <td>{{ investment.rendimento }}</td>
           </tr>
         </tbody>
         <tfoot></tfoot>
@@ -30,10 +30,20 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "InvestmentsList",
   props: {
     msg: String,
+  },
+  computed: {
+    ...mapGetters(["getInvestmentList"]),
+  },
+  methods: {
+    ...mapActions(["GET_INVESTMENTS"]),
+  },
+  mounted() {
+    this.GET_INVESTMENTS();
   },
 };
 </script>
