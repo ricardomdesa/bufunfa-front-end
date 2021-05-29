@@ -3,7 +3,7 @@
     <div class="columns is-centered">
       <div class="column is-flex is-narrow">
         <form class="box" @submit.prevent="login">
-          <h2 class="title is-5">Entrar</h2>
+          <h2 class="title is-5 has-text-centered">Acesso</h2>
           <div class="field">
             <div class="control">
               <input
@@ -11,7 +11,7 @@
                 required
                 v-model="username"
                 type="text"
-                placeholder="Username"
+                placeholder="Usuario"
               />
             </div>
           </div>
@@ -22,16 +22,24 @@
                 required
                 v-model="password"
                 type="password"
-                placeholder="********"
+                placeholder="Senha"
               /><span class="icon is-small is-left">
                 <i class="fa fa-lock"></i>
               </span>
             </div>
           </div>
-          <div class="field">
-            <button class="button shopee-btn is-primary" type="submit">
-              Login
-            </button>
+
+          <div class="columns">
+            <div class="column">
+              <button class="button is-success" type="submit">
+                Entrar
+              </button>
+          </div>
+            <div class="column is-full">
+              <p class="">Não tem uma conta?</p>
+              <router-link class="has-text-success-dark" to="/signup">
+              Cadastrar</router-link>
+            </div>
           </div>
         </form>
       </div>
