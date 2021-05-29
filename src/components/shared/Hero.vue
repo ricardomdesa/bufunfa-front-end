@@ -37,34 +37,28 @@
         Sistema para acompanhar carteira de ações
       </p>
     </div>
-    <div class="hero-foot">
-      <nav class="tabs is-boxed is-fullwidth">
-        <div class="container">
-          <ul>
-            <li class="is-active">
-              <a>Investimentos</a>
-            </li>
-            <li>
-              <a>Lista de Ações</a>
-            </li>
-            <li>
-              <a>Carregar ações</a>
-            </li>
-            <li>
-              <a>Carregar Investimentos</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+    <div class="hero-foot" v-if="hasToken">
+      <nav-tab :tabs="tabs" />
     </div>
   </section>
 </template>
 <script>
 import { mapActions, mapGetters } from "vuex";
+import NavTab from "./NavTab.vue";
 
 export default {
+  components: { NavTab },
   computed: {
     ...mapGetters(["hasToken"]),
+  },
+  setup() {
+    const tabs = [
+      { index: "investimentos", tabName: "Lista de Investimentos" },
+      { index: "acoes", tabName: "Lista de Ações" },
+      { index: "load_investments", tabName: "Carregar Investimentos" },
+      { index: "load_acoes", tabName: "Carregar Ações" },
+    ];
+    return { tabs };
   },
   methods: {
     ...mapActions(["AUTH_LOGOUT"]),
