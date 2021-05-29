@@ -1,9 +1,10 @@
 import axios from "axios";
-import apiURL from "../environment.js";
+// import apiURL from "../environment.js";
 
 const instance = axios.create({
-    baseURL: `${apiURL}`,
-    timeout: 3000
+    // baseURL: `${apiURL}`,
+    baseURL: 'http://localhost:8002',
+    timeout: 20000
 });
 
 instance.interceptors.request.use(
@@ -54,7 +55,7 @@ const ApiService = {
     postToken(user) {
         return new Promise((resolve, reject) => {
             instance
-                .post("/login", `username=${user.username}&password=${user.password}`)
+                .post(`/login`, `username=${user.username}&password=${user.password}`)
                 .then((resp) => {
                     sessionSet("access-token", resp.data.access_token);
                     resolve(resp)

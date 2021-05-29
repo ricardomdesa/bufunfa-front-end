@@ -1,11 +1,22 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/login">Login</router-link>
+    <hero />
   </div>
   <router-view/>
 </template>
+<script>
+import Hero from './components/shared/Hero.vue'
+export default {
+  components:{
+    Hero,
+  }
+}
+</script>
+
 
 <style>
-
+body {
+  height: 100vh;
+  background-color: #f5f5f5;
+}
 </style>
