@@ -12,9 +12,12 @@ export default createStore({
     http
   },
   state: {
+    currentTab: "investimentos"
   },
   mutations: {
+    SET_CURRENT_TAB: (state, tab) => state.currentTab = tab
   },
   actions: {
+    CHANGE_TAB: ({ commit }, tab) => commit("SET_CURRENT_TAB", tab)
   }
 })

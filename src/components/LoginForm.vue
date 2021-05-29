@@ -3,7 +3,7 @@
     <div class="columns is-centered">
       <div class="column is-flex is-narrow">
         <form class="box" @submit.prevent="login">
-          <h2 class="title is-5">Sign in</h2>
+          <h2 class="title is-5">Entrar</h2>
           <div class="field">
             <div class="control">
               <input
