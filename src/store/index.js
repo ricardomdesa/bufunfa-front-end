@@ -14,10 +14,13 @@ export default createStore({
   state: {
     currentTab: "investimentos"
   },
+  getters: {
+    getCurrentTab: state => state.currentTab
+  },
   mutations: {
     SET_CURRENT_TAB: (state, tab) => state.currentTab = tab
   },
   actions: {
-    CHANGE_TAB: ({ commit }, tab) => commit("SET_CURRENT_TAB", tab)
+    CHANGE_CURRENT_TAB: ({ commit }, tab) => commit("SET_CURRENT_TAB", tab)
   }
 })
