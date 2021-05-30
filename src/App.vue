@@ -3,12 +3,19 @@
     <hero />
   </div>
   <router-view/>
+
+  <Footer />
+  
+  
+
 </template>
 <script>
 import Hero from './components/shared/Hero.vue'
+import Footer from './components/shared/Footer.vue'
 export default {
   components:{
     Hero,
+    Footer,
   }
 }
 </script>
@@ -20,3 +27,4 @@ body {
   background-color: #f5f5f5;
 }
 </style>
+

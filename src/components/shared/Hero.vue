@@ -1,27 +1,37 @@
 <template>
-  <section class="hero is-primary">
+  <section class="hero is-success">
     <div class="hero-head">
       <nav class="navbar">
         <div class="container">
           <div id="navbarMenuHeroB" class="navbar-menu">
             <div class="navbar-end" v-if="!hasToken">
+
+                <!--
+                 <span class="navbar-item">
+                <router-link class="button is-success has-text-weight-bold" to="/login">
+                  <span class="">Entrar</span>
+                  <span class="icon">
+                    <i class="fas fa-sign-in-alt fa-lg"></i>
+                  </span>
+                  </router-link>
+                </span>
+                  -->
+              <!--
               <span class="navbar-item">
-                <router-link class="button is-info is-inverted" to="/login"
-                  >Entrar</router-link
-                >
+                <router-link class="button is-success has-text-weight-bold" to="/signup"
+                  >Cadastrar</router-link>
               </span>
-              <span class="navbar-item">
-                <router-link class="button is-info is-inverted" to="/signup"
-                  >Cadastrar</router-link
-                >
-              </span>
+              -->
             </div>
             <div class="navbar-end" v-if="hasToken">
               <span class="navbar-item">
                 <a @click="logout">
-                  <router-link class="button is-info is-inverted" to="/login"
-                    >Logout</router-link
-                  >
+                  <router-link class="button is-success is-focused has-text-weight-bold" to="/login">
+                    <span class="">Sair</span>
+                    <span class="icon">
+                      <i class="fas fa-sign-out-alt fa-lg"></i>
+                    </span>
+                    </router-link>
                 </a>
               </span>
             </div>
@@ -34,7 +44,7 @@
         Bufunfa
       </p>
       <p class="subtitle">
-        Sistema para acompanhar carteira de ações
+        O jeito mais fácil de acompanhar sua carteira de ações
       </p>
     </div>
     <div class="hero-foot" v-if="hasToken">

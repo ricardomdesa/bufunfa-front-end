@@ -3,7 +3,7 @@
     <div class="columns is-centered">
       <div class="column is-flex is-narrow">
         <form class="box" @submit.prevent="signup">
-          <h2 class="title is-5">Cadastrar novo usuário</h2>
+          <h2 class="title is-5 has-text-centered">Cadastrar novo usuário</h2>
           <div class="field">
             <div class="control">
               <input
@@ -14,16 +14,16 @@
                 placeholder="Nome"
               />
             </div>
-            <div class="field">
-              <div class="control">
-                <input
-                  class="input"
-                  required
-                  v-model="username"
-                  type="text"
-                  placeholder="Username"
-                />
-              </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <input
+                class="input"
+                required
+                v-model="username"
+                type="text"
+                placeholder="Usuario"
+              />
             </div>
           </div>
           <div class="field">
@@ -33,7 +33,7 @@
                 required
                 v-model="password"
                 type="password"
-                placeholder="********"
+                placeholder="Senha"
               /><span class="icon is-small is-left">
                 <i class="fa fa-lock"></i>
               </span>
@@ -46,16 +46,23 @@
                 required
                 v-model="confirmPassword"
                 type="password"
-                placeholder="********"
+                placeholder="Repetir senha"
               /><span class="icon is-small is-left">
                 <i class="fa fa-lock"></i>
               </span>
             </div>
           </div>
-          <div class="field">
-            <button class="button shopee-btn is-primary" type="submit">
-              Cadastrar
-            </button>
+          <div class="columns">
+            <div class="column">
+              <button class="button is-success" type="submit">
+                Cadastrar
+              </button>
+          </div>
+            <div class="column is-full">
+              <p class="">Já tenho conta</p>
+              <router-link class="has-text-success-dark" to="/login">
+              Entrar</router-link>
+            </div>
           </div>
         </form>
       </div>
