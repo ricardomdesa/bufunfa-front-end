@@ -3,13 +3,15 @@ import auth from './modules/auth'
 import messages from './modules/messages'
 import investments from './modules/investments'
 import http from './modules/http'
+import file from './modules/file'
 
 export default createStore({
   modules: {
     auth,
     messages,
     investments,
-    http
+    http,
+    file
   },
   state: {
     currentTab: "investimentos"
