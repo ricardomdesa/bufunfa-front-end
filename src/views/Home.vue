@@ -3,7 +3,9 @@
     <div v-if="getCurrentTab === 'investimentos'">
       <investments-list />
     </div>
-    <div v-if="getCurrentTab === 'acoes'"></div>
+    <div v-if="getCurrentTab === 'acoes'">
+      <stock-list />
+    </div>
     <div class="box block" v-if="getCurrentTab === 'load_investments'">
       <file-input />
       <button class="button" @click="loadInvest">
@@ -24,6 +26,7 @@ import { mapActions, mapGetters } from "vuex";
 // @ is an alias to /src
 import InvestmentsList from "../components/InvestmentsList.vue";
 import FileInput from "../components/shared/drag-n-drop/FileInput.vue";
+import StockList from '../components/StockList.vue';
 
 export default {
   name: "Home",
@@ -33,6 +36,7 @@ export default {
   components: {
     InvestmentsList,
     FileInput,
+    StockList,
   },
   methods: {
     ...mapActions(["LOAD_INVESTMENTS", "CLEAR_FILE", "LOAD_STOCKS"]),
