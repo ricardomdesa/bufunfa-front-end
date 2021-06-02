@@ -1,5 +1,13 @@
 <template>
   <div class="box">
+    <div class=" box level">
+      <button class="button is-info level-left" @click="updatePrices">
+        Atualizar preço atual
+      </button>
+      <button class="button is-info level-right" @click="insertMovimentation">
+        Inserir movimentação
+      </button>
+    </div>
     <table class="table container">
       <thead>
         <tr>

@@ -1,9 +1,6 @@
 <template>
   <div>
     <div v-if="getCurrentTab === 'investimentos'">
-      <button class="button is-info" @click="updatePrices">
-        Atualizar preço atual
-      </button>
       <investments-list />
     </div>
     <div v-if="getCurrentTab === 'acoes'"></div>
@@ -38,12 +35,7 @@ export default {
     FileInput,
   },
   methods: {
-    ...mapActions([
-      "LOAD_INVESTMENTS",
-      "CLEAR_FILE",
-      "LOAD_STOCKS",
-      "FETCH_PRICES",
-    ]),
+    ...mapActions(["LOAD_INVESTMENTS", "CLEAR_FILE", "LOAD_STOCKS"]),
     loadInvest() {
       const data = new FormData();
       data.append("investment_file", this.getFile);
@@ -55,9 +47,6 @@ export default {
       data.append("stock_file", this.getFile);
       this.LOAD_STOCKS(data);
       this.CLEAR_FILE();
-    },
-    updatePrices() {
-      this.FETCH_PRICES();
     },
   },
 };
