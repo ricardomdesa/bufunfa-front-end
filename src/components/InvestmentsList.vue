@@ -52,10 +52,7 @@
           <span>Inserir nova movimentação </span>
         </template>
         <template v-slot:body>
-          <div>
-            <label for="acao">acao</label>
-            <input type="field text" value="acao" />
-          </div>
+          <moviment-form />
         </template>
       </modal>
     </div>
@@ -65,10 +62,12 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 import modal from "@/components/shared/modal/Modal.vue";
+import MovimentForm from './MovimentForm.vue';
 export default {
   name: "InvestmentsList",
   components: {
     modal,
+    MovimentForm,
   },
   data() {
     return {
