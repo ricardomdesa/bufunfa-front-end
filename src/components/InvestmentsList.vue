@@ -1,12 +1,16 @@
 <template>
   <div class="box">
-    <div class=" box level">
-      <button class="button is-info level-left" @click="updatePrices">
-        Atualizar preço atual
-      </button>
-      <button class="button is-info level-right" @click="insertMovimentation">
-        Inserir movimentação
-      </button>
+    <div class="box level">
+      <div class="level-item">
+        <button class="button is-info" @click="updatePrices">
+          Atualizar preço atual
+        </button>
+      </div>
+      <div class="level-item">
+        <button class="button is-info" @click="insertMovimentation">
+          Inserir movimentação
+        </button>
+      </div>
     </div>
     <table class="table container">
       <thead>
@@ -48,9 +52,9 @@
           <span>Inserir nova movimentação </span>
         </template>
         <template v-slot:body>
-          <div >
+          <div>
             <label for="acao">acao</label>
-            <input type="field text" value="acao">
+            <input type="field text" value="acao" />
           </div>
         </template>
       </modal>
@@ -60,16 +64,16 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
-import modal from "@/components/shared/modal/Modal.vue"
+import modal from "@/components/shared/modal/Modal.vue";
 export default {
   name: "InvestmentsList",
-  components:{
-    modal
+  components: {
+    modal,
   },
-  data(){
+  data() {
     return {
-      insertMovimentationVisible: false
-    }
+      insertMovimentationVisible: false,
+    };
   },
   props: {
     msg: String,
