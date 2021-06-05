@@ -3,12 +3,18 @@
     <div class="box level">
       <div class="level-item">
         <button class="button is-info" @click="updatePrices">
-          Atualizar preço atual
+          <span> Atualizar preço atual </span>
+          <span class="icon">
+            <i class="fas fa-sync fa-lg"></i>
+          </span>
         </button>
       </div>
       <div class="level-item">
         <button class="button is-info" @click="insertMovimentation">
-          Inserir movimentação
+          <span>Inserir movimentação</span>
+          <span class="icon">
+            <i class="fas fa-plus fa-lg"></i>
+          </span>
         </button>
       </div>
     </div>
@@ -47,12 +53,12 @@
       <tfoot></tfoot>
     </table>
     <div v-if="insertMovimentationVisible">
-      <modal @close="insertMovimentationVisible = false">
+      <modal>
         <template v-slot:header>
-          <span>Inserir nova movimentação </span>
+          <span>Adicionar nova movimentação </span>
         </template>
         <template v-slot:body>
-          <moviment-form />
+          <moviment-form @close="insertMovimentationVisible = false" />
         </template>
       </modal>
     </div>
@@ -62,7 +68,7 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 import modal from "@/components/shared/modal/Modal.vue";
-import MovimentForm from './MovimentForm.vue';
+import MovimentForm from "./MovimentForm.vue";
 export default {
   name: "InvestmentsList",
   components: {
@@ -87,7 +93,6 @@ export default {
     },
     insertMovimentation() {
       this.insertMovimentationVisible = true;
-      console.log("TODO: insert movimentation in backend");
     },
   },
   mounted() {
