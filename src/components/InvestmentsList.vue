@@ -68,7 +68,7 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 import modal from "@/components/shared/modal/Modal.vue";
-import MovimentForm from "./MovimentForm.vue";
+import MovimentForm from "./forms/MovimentForm.vue";
 export default {
   name: "InvestmentsList",
   components: {
