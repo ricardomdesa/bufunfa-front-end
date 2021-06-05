@@ -1,5 +1,22 @@
 <template>
   <form class="form" name="movimentForm" @submit.prevent="insert">
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">Corretora</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <p class="control">
+            <input
+              class="input"
+              type="text"
+              placeholder="corretora..."
+              v-model="corretora"
+            />
+          </p>
+        </div>
+      </div>
+    </div>
     <div class="field is-horizontal ">
       <div class="field-label is-normal">
         <label class="label">Ação</label>
@@ -103,6 +120,7 @@ export default {
     return {
       selected: "",
       selectedStock: "Selecione uma ação",
+      corretora: "",
       quantity: 100,
       price: 0.0,
       opType: null,
