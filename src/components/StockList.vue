@@ -12,7 +12,7 @@
         <tr v-for="stock in getStockList" :key="stock">
           <td>{{ stock.stock_name }}</td>
           <td>{{ stock.stock_code }}</td>
-          <td>{{ stock.stock_price }}</td>
+          <td>{{ stock.stock_current_price }}</td>
         </tr>
       </tbody>
       <tfoot></tfoot>
