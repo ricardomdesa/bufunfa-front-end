@@ -41,13 +41,18 @@ export default {
         })
         .catch((err) => commit("SET_ERROR_BY_CODE", err));
     },
-    FETCH_PRICES({dispatch, commit}){
-        ApiService.post('/fetch-current-prices')
+    FETCH_PRICES({ dispatch, commit }) {
+      ApiService.post("/fetch-current-prices")
         .then(dispatch("GET_INVESTMENTS"))
-        .catch((err) => commit("SET_ERROR_BY_CODE", err))
+        .catch((err) => commit("SET_ERROR_BY_CODE", err));
     },
     SIGNUP_REQUEST({ dispatch, commit }, data) {
       ApiService.post("/signup", data)
+        .then((res) => dispatch("ADD_INFO_MESSAGE", res.data.message))
+        .catch((err) => commit("SET_ERROR_BY_CODE", err));
+    },
+    INSERT_TRANSACTION({ dispatch, commit }, transactionData) {
+      ApiService.post("/insert-transaction", transactionData)
         .then((res) => dispatch("ADD_INFO_MESSAGE", res.data.message))
         .catch((err) => commit("SET_ERROR_BY_CODE", err));
     },
