@@ -7,14 +7,18 @@
       <stock-list />
     </div>
     <div class="box block" v-if="getCurrentTab === 'load_investments'">
-      <file-input />
-      <button class="button" @click="loadInvest">
+      <div class="block">
+        <file-input />
+      </div>
+      <button class="button is-primary" @click="loadInvest">
         Carregar Investimentos
       </button>
     </div>
-    <div v-if="getCurrentTab === 'load_acoes'">
-      <file-input />
-      <button class="button" @click="loadStocks">
+    <div class="box block" v-if="getCurrentTab === 'load_acoes'">
+      <div class="block">
+        <file-input />
+      </div>
+      <button class="button is-primary" @click="loadStocks">
         Carregar Ações
       </button>
     </div>
@@ -26,7 +30,7 @@ import { mapActions, mapGetters } from "vuex";
 // @ is an alias to /src
 import InvestmentsList from "../components/InvestmentsList.vue";
 import FileInput from "../components/shared/drag-n-drop/FileInput.vue";
-import StockList from '../components/StockList.vue';
+import StockList from "../components/StockList.vue";
 
 export default {
   name: "Home",
@@ -55,3 +59,12 @@ export default {
   },
 };
 </script>
+<style scoped>
+div {
+  -webkit-font-smoothing: antialiased !important;
+  text-align: center;
+  /* color: #2c3e50; */
+  color: rgba(0, 0, 0, 0.87);
+  padding-top: 20px;
+}
+</style>
