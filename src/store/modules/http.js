@@ -18,7 +18,7 @@ export default {
         ApiService.post(`/get-stocks`, {})
           .then((response) => {
             commit("CLEAR_STOCK_LIST");
-            dispatch("ADD_STOCK_LIST", response.data.stocks_list);
+            dispatch("ADD_STOCK_LIST", response.data.stock_list);
             resolve(response);
           })
           .catch((err) => commit("SET_ERROR_BY_CODE", err));

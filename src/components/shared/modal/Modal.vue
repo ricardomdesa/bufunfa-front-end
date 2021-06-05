@@ -9,11 +9,10 @@
           <div class="modal-card-body">
             <slot name="body"></slot>
           </div>
-          <div class="modal-card-foot">
+          <!-- <div class="modal-card-foot">
             <slot name="footer">
-              <button class="button is-success" @click="close">OK</button>
             </slot>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
