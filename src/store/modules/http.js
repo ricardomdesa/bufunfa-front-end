@@ -13,6 +13,17 @@ export default {
           .catch((err) => commit("SET_ERROR_BY_CODE", err));
       });
     },
+    GET_STOCKS({ dispatch, commit }) {
+      return new Promise((resolve) => {
+        ApiService.post(`/get-stocks`, {})
+          .then((response) => {
+            commit("CLEAR_STOCK_LIST");
+            dispatch("ADD_STOCK_LIST", response.data.stock_list);
+            resolve(response);
+          })
+          .catch((err) => commit("SET_ERROR_BY_CODE", err));
+      });
+    },
     LOAD_STOCKS({ dispatch, commit }, data) {
       console.log(data);
       ApiService.post(`/load-stocks`, data)

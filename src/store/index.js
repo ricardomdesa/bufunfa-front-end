@@ -4,6 +4,7 @@ import messages from './modules/messages'
 import investments from './modules/investments'
 import http from './modules/http'
 import file from './modules/file'
+import stocks from './modules/stocks'
 
 export default createStore({
   modules: {
@@ -11,7 +12,8 @@ export default createStore({
     messages,
     investments,
     http,
-    file
+    file,
+    stocks
   },
   state: {
     currentTab: "investimentos"

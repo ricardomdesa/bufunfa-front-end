@@ -39,7 +39,7 @@ export default {
   data() {
     return {
       localFile: "",
-      dragoverClass: false
+      dragoverClass: false,
     };
   },
   methods: {
@@ -72,7 +72,16 @@ export default {
         }
         this.ADD_FILE(this.localFile);
       }
-    }
-  }
+    },
+  },
 };
 </script>
+<style scoped>
+div {
+  -webkit-font-smoothing: antialiased !important;
+  text-align: center;
+  /* color: #2c3e50; */
+  color: rgba(0, 0, 0, 0.87);
+  padding-top: 20px;
+}
+</style>
