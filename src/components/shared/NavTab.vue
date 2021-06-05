@@ -8,8 +8,8 @@
           @click="changeTabIndex(tab.index)"
           :class="{ 'is-active': getCurrentTab === tab.index }"
         >
-          <a :class="{'button': getCurrentTab === tab.index}">
-            {{ tab.tabName }}
+          <a :class="{ button: getCurrentTab === tab.index }">
+            <strong> {{ tab.tabName }} </strong>
           </a>
         </li>
       </ul>
@@ -34,6 +34,4 @@ export default {
 };
 </script>
 
-<style>
-
-</style>
+<style></style>
