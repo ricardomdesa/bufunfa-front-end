@@ -4,34 +4,23 @@
       <nav class="navbar">
         <div class="container">
           <div id="navbarMenuHeroB" class="navbar-menu">
-            <div class="navbar-end" v-if="!hasToken">
-
-                <!--
-                 <span class="navbar-item">
-                <router-link class="button is-success has-text-weight-bold" to="/login">
-                  <span class="">Entrar</span>
-                  <span class="icon">
-                    <i class="fas fa-sign-in-alt fa-lg"></i>
-                  </span>
-                  </router-link>
-                </span>
-                  -->
-              <!--
+            <div class="navbar-end" v-if="hasToken">
               <span class="navbar-item">
-                <router-link class="button is-success has-text-weight-bold" to="/signup"
-                  >Cadastrar</router-link>
+                  <span class="subtitle is-4">Bem vindo, {{ getUsername }}!</span>
               </span>
-              -->
             </div>
             <div class="navbar-end" v-if="hasToken">
               <span class="navbar-item">
                 <a @click="logout">
-                  <router-link class="button is-success is-focused has-text-weight-bold" to="/login">
+                  <router-link
+                    class="button is-success is-focused has-text-weight-bold"
+                    to="/login"
+                  >
                     <span class="">Sair</span>
                     <span class="icon">
                       <i class="fas fa-sign-out-alt fa-lg"></i>
                     </span>
-                    </router-link>
+                  </router-link>
                 </a>
               </span>
             </div>
@@ -59,7 +48,7 @@ import NavTab from "./NavTab.vue";
 export default {
   components: { NavTab },
   computed: {
-    ...mapGetters(["hasToken"]),
+    ...mapGetters(["hasToken", "getUsername"]),
   },
   setup() {
     const tabs = [
@@ -71,9 +60,11 @@ export default {
     return { tabs };
   },
   methods: {
-    ...mapActions(["AUTH_LOGOUT"]),
+    ...mapActions(["AUTH_LOGOUT", "CLEAR_INVESTMENT_LIST", "CLEAR_STOCK_LIST"]),
     logout() {
       this.AUTH_LOGOUT();
+      this.CLEAR_INVESTMENT_LIST();
+      this.CLEAR_STOCK_LIST();
     },
   },
 };
