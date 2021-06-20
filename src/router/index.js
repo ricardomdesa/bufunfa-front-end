@@ -1,15 +1,9 @@
-<<<<<<< HEAD
-import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
-import store from '@/store'
-=======
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import store from "@/store";
 
 Vue.use(VueRouter);
->>>>>>> origin/dashboard_bf_frontend
 
 const ifAuthenticated = (to, from, next) => {
   if (store.getters.hasToken) {
@@ -21,10 +15,6 @@ const ifAuthenticated = (to, from, next) => {
 
 const routes = [
   {
-<<<<<<< HEAD
-    path: '/',
-    name: 'Home',
-=======
     meta: {
       title: "Login"
     },
@@ -41,33 +31,10 @@ const routes = [
     },
     path: "/",
     name: "home",
->>>>>>> origin/dashboard_bf_frontend
     component: Home,
     beforeEnter: ifAuthenticated
   },
   {
-<<<<<<< HEAD
-    path: '/login',
-    name: 'Login',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
-  },
-  {
-    path: '/signup',
-    name: 'SignUp',
-    component: () => import('../views/SignUp.vue')
-  }
-]
-
-const router = createRouter({
-  history: createWebHistory(),
-  routes
-})
-
-export default router
-=======
     meta: {
       title: "Tabela de Acoes"
     },
@@ -139,4 +106,3 @@ const router = new VueRouter({
 });
 
 export default router;
->>>>>>> origin/dashboard_bf_frontend

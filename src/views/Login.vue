@@ -1,18 +1,4 @@
 <template>
-<<<<<<< HEAD
-  <div>
-    <LoginForm />
-  </div>
-</template>
-<script>
-import LoginForm from "@/components/LoginForm.vue";
-export default {
-  name: "App",
-  components: {
-    LoginForm,
-  },
-  setup() {},
-=======
   <div id="app">
     <aside-menu :menu="menu" />
     <forms />
@@ -44,6 +30,5 @@ export default {
       ];
     }
   }
->>>>>>> origin/dashboard_bf_frontend
 };
 </script>
