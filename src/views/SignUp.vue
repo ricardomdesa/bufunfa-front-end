@@ -8,10 +8,10 @@
 <script>
 // @ is an alias to /src
 import AsideMenu from "@/components/AsideMenu";
-import Forms from "../components/forms/LoginForm.vue";
+import Forms from "../components/forms/CadastrarForm.vue";
 
 export default {
-  name: "Login",
+  name: "Signup",
   components: {
     AsideMenu,
     Forms

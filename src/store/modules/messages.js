@@ -28,6 +28,7 @@ export default {
         }
       } else {
         errorMessage = "Sessão expirou";
+        state.errorMessages = [];
       }
       state.errorMessages.push(errorMessage);
     }
