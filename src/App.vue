@@ -68,7 +68,7 @@ export default {
                 icon: "cloud-upload"
               },
               {
-                to: "/load-stock",
+                to: "/load-stocks",
                 label: "Carregar ações",
                 // icon: 'square-edit-outline'
                 icon: "cloud-upload"

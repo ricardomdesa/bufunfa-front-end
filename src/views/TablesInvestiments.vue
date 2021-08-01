@@ -3,9 +3,12 @@
     <title-bar :title-stack="titleStack" />
     <hero-bar>
       Carteira
-      <router-link slot="right" to="/" class="button">
-        Dashboard
-      </router-link>
+      <div slot="right">
+        <router-link to="/" class="button">
+          Dashboard
+        </router-link>
+        <button class="button">BUTTON FETCH</button>
+      </div>
     </hero-bar>
     <section class="section is-main-section">
       <notification class="is-info">

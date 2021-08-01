@@ -47,10 +47,9 @@ export default {
     ...mapGetters(["getFile", "getErrorMessages", "hasErrorMessages"])
   },
   methods: {
-    ...mapActions(["LOAD_INVESTMENTS", "LOAD_STOCKS"]),
+    ...mapActions(["LOAD_INVESTMENTS"]),
     carregar() {
       this.LOAD_INVESTMENTS(this.getFile);
-      this.LOAD_STOCKS(this.getFile);
     }
   }
 };
