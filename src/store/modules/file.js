@@ -3,7 +3,8 @@ export default {
     file: null
   },
   getters: {
-    getFile: state => state.file
+    getFile: state => state.file,
+    hasFileSelected: state => (state.file === null ? false : true)
   },
   mutations: {
     SET_FILE: (state, file) => (state.file = file),

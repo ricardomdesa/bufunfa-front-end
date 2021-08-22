@@ -63,14 +63,14 @@ export default {
                 icon: "plus"
               },
               {
-                to: "/load-invest",
-                label: "Carregar investimentos",
-                icon: "cloud-upload"
-              },
-              {
                 to: "/load-stocks",
                 label: "Carregar ações",
                 // icon: 'square-edit-outline'
+                icon: "cloud-upload"
+              },
+              {
+                to: "/load-invest",
+                label: "Carregar investimentos",
                 icon: "cloud-upload"
               }
             ]

@@ -17,8 +17,12 @@
       <file-input />
       <hr />
       <div class="block level-item">
-        <button class="button is-primary" @click="carregar">
-          Carregar informações
+        <button
+          class="button is-primary"
+          :disabled="!hasFileSelected"
+          @click="carregar"
+        >
+          Carregar investimentos
         </button>
       </div>
     </section>
@@ -44,7 +48,12 @@ export default {
       return ["Admin", "Load"];
     },
     ...mapState(["userName", "userEmail"]),
-    ...mapGetters(["getFile", "getErrorMessages", "hasErrorMessages"])
+    ...mapGetters([
+      "getFile",
+      "getErrorMessages",
+      "hasErrorMessages",
+      "hasFileSelected"
+    ])
   },
   methods: {
     ...mapActions(["LOAD_INVESTMENTS"]),

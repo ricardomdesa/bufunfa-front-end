@@ -2,7 +2,7 @@
   <div>
     <title-bar :title-stack="titleStack" />
     <hero-bar>
-      Carregar acoes
+      Carregar ações
       <router-link slot="right" to="/" class="button">
         Dashboard
       </router-link>
@@ -17,8 +17,12 @@
       <file-input />
       <hr />
       <div class="block level-item">
-        <button class="button is-primary" @click="carregar">
-          Carregar informações
+        <button
+          class="button is-primary"
+          :disabled="!hasFileSelected"
+          @click="carregar"
+        >
+          Carregar ações
         </button>
       </div>
     </section>
@@ -44,7 +48,12 @@ export default {
       return ["Admin", "Load"];
     },
     ...mapState(["userName", "userEmail"]),
-    ...mapGetters(["getFile", "getErrorMessages", "hasErrorMessages"])
+    ...mapGetters([
+      "getFile",
+      "getErrorMessages",
+      "hasErrorMessages",
+      "hasFileSelected"
+    ])
   },
   methods: {
     ...mapActions(["LOAD_STOCKS"]),
