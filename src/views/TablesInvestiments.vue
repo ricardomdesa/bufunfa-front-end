@@ -7,7 +7,6 @@
         <router-link to="/" class="button">
           Dashboard
         </router-link>
-        <button class="button">BUTTON FETCH</button>
       </div>
     </hero-bar>
     <section class="section is-main-section">
@@ -53,6 +52,7 @@ import CardComponent from "@/components/CardComponent";
 import TitleBar from "@/components/TitleBar";
 import HeroBar from "@/components/HeroBar";
 import WalletTableModel from "../components/WalletTableModel.vue";
+import { mapActions } from "vuex";
 export default {
   name: "Tables",
   components: {
@@ -66,6 +66,12 @@ export default {
     titleStack() {
       return ["Admin", "Carteira"];
     }
+  },
+  methods: {
+    ...mapActions(["FETCH_PRICES"])
+  },
+  mounted() {
+    this.FETCH_PRICES();
   }
 };
 </script>
