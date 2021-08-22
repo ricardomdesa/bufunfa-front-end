@@ -16,7 +16,7 @@
         type="file"
         name="file"
         @change="onChange"
-        accept=".xlsx"
+        accept=".csv"
         required="required"
       />
       <span class="file-cta">
@@ -64,7 +64,7 @@ export default {
         this.dragoverClass = false;
         this.localFile = event.dataTransfer.files[0];
         const fileType = this.localFile.name.split(".").pop();
-        if (!["xlsx"].includes(fileType)) {
+        if (!["csv"].includes(fileType)) {
           console.log(`CANNOT LOAD FILE of TYPE: ${fileType}`);
           this.localFile = "";
           this.ADD_FILE(this.localFile);

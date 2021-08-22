@@ -35,20 +35,32 @@ export default {
           .catch(err => commit("SET_ERROR_BY_CODE", err));
       });
     },
-    LOAD_STOCKS({ dispatch, commit }, data) {
+    LOAD_STOCKS({ dispatch, commit }, file) {
       console.log(data);
-      ApiService.post(`/load-stocks`, data)
+      const data = new FormData();
+      data.append("stock_file", file);
+      ApiService.post(`/load-stocks`, data, {
+        headers: {
+          "Content-Type": file.type
+        }
+      })
         .then(res => {
           dispatch("ADD_INFO_MESSAGE", res.data.message);
-          dispatch("CHANGE_CURRENT_TAB", "acoes");
+          dispatch("CLEAR_FILE");
         })
         .catch(err => commit("SET_ERROR_BY_CODE", err));
     },
-    LOAD_INVESTMENTS({ dispatch, commit }, data) {
-      ApiService.post(`/load-investments`, data)
+    LOAD_INVESTMENTS({ dispatch, commit }, file) {
+      const data = new FormData();
+      data.append("investment_file", file);
+      ApiService.post(`/load-investments`, data, {
+        headers: {
+          "Content-Type": file.type
+        }
+      })
         .then(res => {
           dispatch("ADD_INFO_MESSAGE", res.data.message);
-          dispatch("CHANGE_CURRENT_TAB", "investimentos");
+          dispatch("CLEAR_FILE");
         })
         .catch(err => commit("SET_ERROR_BY_CODE", err));
     },
