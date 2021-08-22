@@ -68,9 +68,9 @@ const ApiService = {
     });
   },
 
-  post(url, data) {
+  post(url, data, config) {
     return instance
-      .post(url, data)
+      .post(url, data, config)
       .then(res => res)
       .catch(reason => Promise.reject(reason));
   },

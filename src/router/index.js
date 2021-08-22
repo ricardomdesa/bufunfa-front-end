@@ -24,6 +24,15 @@ const routes = [
       import(/* webpackChunkName: "tables" */ "../views/Login.vue")
   },
   {
+    meta: {
+      title: "Signup"
+    },
+    path: "/sign-up",
+    name: "signup",
+    component: () =>
+      import(/* webpackChunkName: "tables" */ "../views/SignUp.vue")
+  },
+  {
     // Document title tag
     // We combine it with defaultDocumentTitle set in `src/main.js` on router.afterEach hook
     meta: {
@@ -49,6 +58,32 @@ const routes = [
   },
   {
     meta: {
+      title: "Carregar Inv"
+    },
+    path: "/load-invest",
+    name: "loadInvest",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "tables" */ "../views/LoadInvest.vue")
+    // beforeEnter: ifAuthenticated
+  },
+  {
+    meta: {
+      title: "Carregar Acoes"
+    },
+    path: "/load-stocks",
+    name: "loadStocks",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "tables" */ "../views/LoadStocks.vue")
+    // beforeEnter: ifAuthenticated
+  },
+  {
+    meta: {
       title: "Carteira"
     },
     path: "/wallet-table",
@@ -61,35 +96,6 @@ const routes = [
         /* webpackChunkName: "tables" */ "../views/TablesInvestiments.vue"
       ),
     beforeEnter: ifAuthenticated
-  },
-  {
-    meta: {
-      title: "Profile"
-    },
-    path: "/profile",
-    name: "profile",
-    component: () =>
-      import(/* webpackChunkName: "profile" */ "../views/Profile.vue"),
-    beforeEnter: ifAuthenticated
-  },
-  {
-    meta: {
-      title: "New Client"
-    },
-    path: "/client/new",
-    name: "client.new",
-    component: () =>
-      import(/* webpackChunkName: "client-form" */ "../views/ClientForm.vue")
-  },
-  {
-    meta: {
-      title: "Edit Client"
-    },
-    path: "/client/:id",
-    name: "client.edit",
-    component: () =>
-      import(/* webpackChunkName: "client-form" */ "../views/ClientForm.vue"),
-    props: true
   }
 ];
 

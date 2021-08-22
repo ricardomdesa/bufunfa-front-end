@@ -3,9 +3,11 @@
     <title-bar :title-stack="titleStack" />
     <hero-bar>
       Carteira
-      <router-link slot="right" to="/" class="button">
-        Dashboard
-      </router-link>
+      <div slot="right">
+        <router-link to="/" class="button">
+          Dashboard
+        </router-link>
+      </div>
     </hero-bar>
     <section class="section is-main-section">
       <notification class="is-info">
@@ -50,6 +52,7 @@ import CardComponent from "@/components/CardComponent";
 import TitleBar from "@/components/TitleBar";
 import HeroBar from "@/components/HeroBar";
 import WalletTableModel from "../components/WalletTableModel.vue";
+import { mapActions } from "vuex";
 export default {
   name: "Tables",
   components: {
@@ -63,6 +66,12 @@ export default {
     titleStack() {
       return ["Admin", "Carteira"];
     }
+  },
+  methods: {
+    ...mapActions(["FETCH_PRICES"])
+  },
+  mounted() {
+    this.FETCH_PRICES();
   }
 };
 </script>

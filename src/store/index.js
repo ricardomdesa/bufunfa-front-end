@@ -6,6 +6,7 @@ import http from "./modules/http";
 import stocks from "./modules/stocks";
 import dashboardInfo from "./modules/dashboardInfo";
 import investiments from "./modules/investments";
+import file from "./modules/file";
 
 Vue.use(Vuex);
 
@@ -16,7 +17,8 @@ export default new Vuex.Store({
     http,
     stocks,
     investiments,
-    dashboardInfo
+    dashboardInfo,
+    file
   },
   state: {
     /* User */
