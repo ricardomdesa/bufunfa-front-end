@@ -9,7 +9,7 @@
   </div>
 </template>
 <script>
-// import VueApexCharts from "vue-apexcharts";
+import { mapGetters } from "vuex";
 export default {
   name: "Vue Chart",
   data: function() {
@@ -56,42 +56,21 @@ export default {
       },
       series: [
         {
-          data: [
-            {
-              x: "TEST1",
-              y: -30
-            },
-            {
-              x: "TEST2",
-              y: 14
-            },
-            {
-              x: "TEST3",
-              y: 25
-            },
-            {
-              x: "TEST4",
-              y: -3
-            }
-          ]
+          data: []
         }
       ]
     };
   },
+  computed: {
+    ...mapGetters(["getTreeMapInfo"])
+  },
   methods: {
-    updateChart() {
-      const max = 90;
-      const min = 20;
-      const newData = this.series[0].data.map(() => {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-      });
-      // In the same way, update the series option
-      this.series = [
-        {
-          data: newData
-        }
-      ];
+    update() {
+      this.series = [{ data: this.getTreeMapInfo }];
     }
+  },
+  mounted() {
+    this.update();
   }
 };
 </script>
