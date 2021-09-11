@@ -14,23 +14,19 @@
       :per-page="perPage"
       :striped="true"
       :hoverable="true"
-      default-sort="name"
+      default-sort="preco_medio"
+      default-sort-direction="desc"
       :data="investiments"
     >
-      <b-table-column
+      <!-- <b-table-column
         cell-class="has-no-head-mobile is-image-cell"
         v-slot="props"
       >
         <div class="image">
           <img :src="props.row.logo" class="is-rounded" />
         </div>
-      </b-table-column>
-      <b-table-column
-        label="Corretora"
-        field="corretora"
-        sortable
-        v-slot="props"
-      >
+      </b-table-column> -->
+      <b-table-column label="Corretora" field="corretora" v-slot="props">
         {{ props.row.corretora }}
       </b-table-column>
       <b-table-column label="Código" field="codigo" sortable v-slot="props">
@@ -39,7 +35,9 @@
       <b-table-column
         label="Preço medio"
         field="preco_medio"
+        @sort="sortPrecoMedio"
         sortable
+        numeric
         v-slot="props"
       >
         {{ props.row.valor_medio }}
@@ -50,12 +48,12 @@
       <b-table-column
         label="Preço atual"
         field="current_price"
-        sortable
+        numeric
         v-slot="props"
       >
         {{ props.row.current_stock_price }}
       </b-table-column>
-      <b-table-column label="Rend. %" field="p_rend" sortable v-slot="props">
+      <b-table-column label="Rend. %" field="p_rend" numeric v-slot="props">
         <span
           :class="[
             'tag',
@@ -66,7 +64,7 @@
           {{ Math.round(props.row.rendimento * 100, 2) }}
         </span>
       </b-table-column>
-      <b-table-column label="Rend. $" field="v_rend" sortable v-slot="props">
+      <b-table-column label="Rend. $" field="v_rend" numeric v-slot="props">
         <span
           :class="[
             'tag',
@@ -85,7 +83,7 @@
       <b-table-column
         label="Total investido"
         field="total_inv"
-        sortable
+        numeric
         v-slot="props"
       >
         <strong>{{ props.row.valor_investido_atual }}</strong>
@@ -97,7 +95,7 @@
       >
         <div class="buttons is-right">
           <router-link
-            :to="{ name: 'client.edit', params: { id: props.row.id } }"
+            :to="{ name: 'walletTable', params: { id: props.row.id } }"
             class="button is-small is-primary"
           >
             <b-icon icon="account-edit" size="is-small" />
@@ -189,6 +187,19 @@ export default {
     },
     trashCancel() {
       this.isModalActive = false;
+    },
+    sortPrecoMedio(a, b) {
+      console.log("testesss", a.valor_medio, b.valor_medio);
+      return a.valor_medio - b.valor_medio;
+    },
+    sortPrecoAtual(a, b) {
+      return a.current_stock_price - b.current_stock_price;
+    },
+    sortRend(a, b) {
+      return a.rendimento - b.rendimento;
+    },
+    sortTotal(a, b) {
+      return a.valor_investido_atual - b.valor_investido_atual;
     }
   }
 };

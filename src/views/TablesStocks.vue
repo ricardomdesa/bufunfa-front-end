@@ -11,7 +11,7 @@
       <card-component
         class="has-table has-mobile-sort-spaced"
         title="Ações"
-        icon="account-multiple"
+        icon="table-large"
       >
         <stock-table-model
           :data-url="`${$router.options.base}data-sources/stocks.json`"

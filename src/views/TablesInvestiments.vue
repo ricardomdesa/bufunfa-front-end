@@ -10,7 +10,7 @@
       </div>
     </hero-bar>
     <section class="section is-main-section">
-      <notification class="is-info">
+      <notification class="is-info" v-show="false">
         <div>
           <b-icon icon="buffer" custom-size="default" />
           <b>Carteira carregada com sucesso</b>
@@ -19,12 +19,12 @@
 
       <card-component
         class="has-table has-mobile-sort-spaced"
-        title="Carteira"
-        icon="account-multiple"
+        title="Investimentos"
+        icon="table-large"
       >
         <wallet-table-model
           :data-url="`${$router.options.base}data-sources/investiments.json`"
-          :checkable="true"
+          :checkable="false"
         />
       </card-component>
 
