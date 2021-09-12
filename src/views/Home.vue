@@ -52,6 +52,13 @@
         />
       </tiles>
       <card-component
+        title="Treemap"
+        class="has-table has-mobile-sort-spaced"
+        icon="table-large"
+      >
+        <Treemap />
+      </card-component>
+      <card-component
         title="Carteira"
         class="has-table has-mobile-sort-spaced"
         icon="table-large"
@@ -75,6 +82,7 @@ import Tiles from "@/components/Tiles";
 import CardWidget from "@/components/CardWidget";
 import WalletTableModel from "../components/WalletTableModel.vue";
 import { mapActions, mapGetters } from "vuex";
+import Treemap from "../components/Charts/TreeMap.vue";
 export default {
   name: "Home",
   components: {
@@ -83,7 +91,8 @@ export default {
     Tiles,
     HeroBar,
     TitleBar,
-    WalletTableModel
+    WalletTableModel,
+    Treemap
   },
   computed: {
     ...mapGetters(["getDashInfo"]),
