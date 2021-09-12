@@ -38,30 +38,29 @@ export default {
           {
             to: "/wallet-table",
             label: "Carteira",
-            icon: "table",
-            updateMark: true
+            icon: "table"
           },
           {
             to: "/stock-table",
             label: "Ações Cadastradas",
-            icon: "table",
-            updateMark: true
+            icon: "table"
+            // updateMark: true
           },
           {
             label: "Movimentações",
-            subLabel: "Submenus Example",
+            subLabel: "Submenus Movimentacoes",
             icon: "view-list",
             menu: [
-              {
-                to: "/add-invest",
-                label: "Inserir investimento",
-                icon: "plus"
-              },
-              {
-                to: "/add-stock",
-                label: "Inserir papel",
-                icon: "plus"
-              },
+              // {
+              //   to: "/add-invest",
+              //   label: "Inserir investimento",
+              //   icon: "plus"
+              // },
+              // {
+              //   to: "/add-stock",
+              //   label: "Inserir papel",
+              //   icon: "plus"
+              // },
               {
                 to: "/load-stocks",
                 label: "Carregar ações",

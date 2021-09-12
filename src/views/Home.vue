@@ -51,8 +51,16 @@
           v-else
         />
       </tiles>
-      <card-component title="Carteira" class="has-table has-mobile-sort-spaced">
-        <wallet-table-model />
+      <card-component
+        title="Carteira"
+        class="has-table has-mobile-sort-spaced"
+        icon="table-large"
+      >
+        <WalletTableModel
+          :data-url="` `"
+          :checkable="false"
+          :itensPerPage="5"
+        />
       </card-component>
     </section>
   </div>
@@ -62,6 +70,7 @@
 // @ is an alias to /src
 import TitleBar from "@/components/TitleBar";
 import HeroBar from "@/components/HeroBar";
+import CardComponent from "@/components/CardComponent";
 import Tiles from "@/components/Tiles";
 import CardWidget from "@/components/CardWidget";
 import WalletTableModel from "../components/WalletTableModel.vue";
@@ -70,6 +79,7 @@ export default {
   name: "Home",
   components: {
     CardWidget,
+    CardComponent,
     Tiles,
     HeroBar,
     TitleBar,
