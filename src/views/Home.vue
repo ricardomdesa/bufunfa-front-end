@@ -56,7 +56,11 @@
         class="has-table has-mobile-sort-spaced"
         icon="table-large"
       >
-        <WalletTableModel :data-url="` `" :checkable="false" />
+        <WalletTableModel
+          :data-url="` `"
+          :checkable="false"
+          :itensPerPage="5"
+        />
       </card-component>
     </section>
   </div>

@@ -25,6 +25,7 @@
         <wallet-table-model
           :data-url="`${$router.options.base}data-sources/investiments.json`"
           :checkable="false"
+          :itensPerPage="10"
         />
       </card-component>
 
