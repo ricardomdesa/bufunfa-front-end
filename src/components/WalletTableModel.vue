@@ -11,51 +11,38 @@
       :checkable="checkable"
       :loading="isLoading"
       :paginated="paginated"
-      :per-page="perPage"
+      :per-page="itensPerPage"
       :striped="true"
       :hoverable="true"
-      default-sort="name"
+      @sort="onSort"
       :data="investiments"
     >
-      <b-table-column
-        cell-class="has-no-head-mobile is-image-cell"
-        v-slot="props"
-      >
-        <div class="image">
-          <img :src="props.row.logo" class="is-rounded" />
-        </div>
-      </b-table-column>
-      <b-table-column
-        label="Corretora"
-        field="corretora"
-        sortable
-        v-slot="props"
-      >
+      <b-table-column label="Corretora" field="corretora" v-slot="props">
         {{ props.row.corretora }}
       </b-table-column>
-      <b-table-column label="Código" field="codigo" sortable v-slot="props">
+      <b-table-column label="Código" field="codigo" v-slot="props">
         {{ props.row.codigo }}
       </b-table-column>
       <b-table-column
         label="Preço medio"
         field="preco_medio"
-        sortable
+        numeric
         v-slot="props"
       >
         {{ props.row.valor_medio }}
       </b-table-column>
-      <b-table-column label="Qtde" field="qtde" sortable v-slot="props">
+      <b-table-column label="Qtde" field="qtde" v-slot="props">
         {{ props.row.quantidade }}
       </b-table-column>
       <b-table-column
         label="Preço atual"
         field="current_price"
-        sortable
+        numeric
         v-slot="props"
       >
         {{ props.row.current_stock_price }}
       </b-table-column>
-      <b-table-column label="Rend. %" field="p_rend" sortable v-slot="props">
+      <b-table-column label="Rend. %" field="p_rend" numeric v-slot="props">
         <span
           :class="[
             'tag',
@@ -66,7 +53,7 @@
           {{ Math.round(props.row.rendimento * 100, 2) }}
         </span>
       </b-table-column>
-      <b-table-column label="Rend. $" field="v_rend" sortable v-slot="props">
+      <b-table-column label="Rend. $" field="v_rend" numeric v-slot="props">
         <span
           :class="[
             'tag',
@@ -85,6 +72,7 @@
       <b-table-column
         label="Total investido"
         field="total_inv"
+        numeric
         sortable
         v-slot="props"
       >
@@ -97,7 +85,7 @@
       >
         <div class="buttons is-right">
           <router-link
-            :to="{ name: 'client.edit', params: { id: props.row.id } }"
+            :to="{ name: 'walletTable', params: { id: props.row.id } }"
             class="button is-small is-primary"
           >
             <b-icon icon="account-edit" size="is-small" />
@@ -147,6 +135,10 @@ export default {
     checkable: {
       type: Boolean,
       default: false
+    },
+    itensPerPage: {
+      type: Number,
+      default: 10
     }
   },
   data() {
@@ -154,9 +146,8 @@ export default {
       isModalActive: false,
       trashObject: null,
       investiments: [],
-      isLoading: false,
-      paginated: false,
-      perPage: 10,
+      isLoading: true,
+      paginated: true,
       checkedRows: []
     };
   },
@@ -171,11 +162,18 @@ export default {
     }
   },
   mounted() {
-    this.GET_INVESTMENTS();
-    this.investiments = this.getInvestmentList;
+    this.getData();
   },
   methods: {
     ...mapActions(["GET_INVESTMENTS"]),
+    getData() {
+      this.isLoading = true;
+      setTimeout(() => {
+        this.isLoading = false;
+        this.GET_INVESTMENTS();
+        this.investiments = this.getInvestmentList;
+      }, 50);
+    },
     trashModal(trashObject) {
       this.trashObject = trashObject;
       this.isModalActive = true;
@@ -189,6 +187,11 @@ export default {
     },
     trashCancel() {
       this.isModalActive = false;
+    },
+    onSort() {
+      this.investiments
+        .slice()
+        .sort((a, b) => a.valor_investido_atual - b.valor_investido_atual);
     }
   }
 };

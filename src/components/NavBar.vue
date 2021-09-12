@@ -34,12 +34,12 @@
 
           <div slot="dropdown" class="navbar-dropdown">
             <router-link
-              to="/profile"
+              to="/"
               class="navbar-item"
               exact-active-class="is-active"
             >
               <b-icon icon="account" custom-size="default" />
-              <span>My Profile</span>
+              <span>Dashboard</span>
             </router-link>
             <a class="navbar-item">
               <b-icon icon="settings" custom-size="default"></b-icon>
@@ -59,9 +59,10 @@
           </div>
         </nav-bar-menu>
         <a
-          href="https://justboil.me/bulma-admin-template/one"
+          href="https://github.com/ricardomdesa/bufunfa-front-end"
           class="navbar-item has-divider is-desktop-icon-only"
           title="About"
+          target="#"
         >
           <b-icon icon="help-circle-outline" custom-size="default" />
           <span>About</span>

@@ -12,6 +12,8 @@ import store from "./store";
 /* Vue. Main component */
 import App from "./App.vue";
 
+import VueApexCharts from "vue-apexcharts";
+
 /* Default title tag */
 const defaultDocumentTitle = "Bufunfa";
 
@@ -29,6 +31,9 @@ router.afterEach(to => {
 Vue.config.productionTip = false;
 
 Vue.use(Buefy);
+Vue.use(VueApexCharts);
+
+Vue.component("apexchart", VueApexCharts);
 
 new Vue({
   router,
