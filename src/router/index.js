@@ -1,6 +1,5 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
 import store from "@/store";
 
 Vue.use(VueRouter);
@@ -20,8 +19,7 @@ const routes = [
     },
     path: "/login",
     name: "login",
-    component: () =>
-      import(/* webpackChunkName: "tables" */ "../views/Login.vue")
+    component: () => import("../views/Login.vue")
   },
   {
     meta: {
@@ -29,18 +27,15 @@ const routes = [
     },
     path: "/sign-up",
     name: "signup",
-    component: () =>
-      import(/* webpackChunkName: "tables" */ "../views/SignUp.vue")
+    component: () => import("../views/SignUp.vue")
   },
   {
-    // Document title tag
-    // We combine it with defaultDocumentTitle set in `src/main.js` on router.afterEach hook
     meta: {
       title: "Dashboard"
     },
     path: "/",
-    name: "home",
-    component: Home,
+    name: "dashboard",
+    component: () => import("../views/Dashboard.vue"),
     beforeEnter: ifAuthenticated
   },
   {
@@ -49,11 +44,16 @@ const routes = [
     },
     path: "/stock-table",
     name: "stockTable",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "tables" */ "../views/TablesStocks.vue"),
+    component: () => import("../views/TablesStocks.vue"),
+    beforeEnter: ifAuthenticated
+  },
+  {
+    meta: {
+      title: "Tabela de Investimentos"
+    },
+    path: "/wallet-table",
+    name: "walletTable",
+    component: () => import("../views/TablesInvestiments.vue"),
     beforeEnter: ifAuthenticated
   },
   {
@@ -62,12 +62,8 @@ const routes = [
     },
     path: "/load-invest",
     name: "loadInvest",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "tables" */ "../views/LoadInvest.vue")
-    // beforeEnter: ifAuthenticated
+    beforeEnter: ifAuthenticated,
+    component: () => import("../views/LoadInvest.vue")
   },
   {
     meta: {
@@ -75,27 +71,8 @@ const routes = [
     },
     path: "/load-stocks",
     name: "loadStocks",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "tables" */ "../views/LoadStocks.vue")
-    // beforeEnter: ifAuthenticated
-  },
-  {
-    meta: {
-      title: "Carteira"
-    },
-    path: "/wallet-table",
-    name: "walletTable",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(
-        /* webpackChunkName: "tables" */ "../views/TablesInvestiments.vue"
-      ),
-    beforeEnter: ifAuthenticated
+    beforeEnter: ifAuthenticated,
+    component: () => import("../views/LoadStocks.vue")
   }
 ];
 

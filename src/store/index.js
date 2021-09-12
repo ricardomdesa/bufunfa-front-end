@@ -22,7 +22,7 @@ export default new Vuex.Store({
   },
   state: {
     /* User */
-    userName: null,
+    userName: "",
     userEmail: null,
     userAvatar: null,
 
