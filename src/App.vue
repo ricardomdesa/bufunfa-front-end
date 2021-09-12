@@ -8,7 +8,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import NavBar from "@/components/NavBar";
 import AsideMenu from "@/components/AsideMenu";
 import FooterBar from "@/components/FooterBar";
@@ -44,27 +43,15 @@ export default {
             to: "/stock-table",
             label: "Ações Cadastradas",
             icon: "table"
-            // updateMark: true
           },
           {
             label: "Movimentações",
             subLabel: "Submenus Movimentacoes",
             icon: "view-list",
             menu: [
-              // {
-              //   to: "/add-invest",
-              //   label: "Inserir investimento",
-              //   icon: "plus"
-              // },
-              // {
-              //   to: "/add-stock",
-              //   label: "Inserir papel",
-              //   icon: "plus"
-              // },
               {
                 to: "/load-stocks",
                 label: "Carregar ações",
-                // icon: 'square-edit-outline'
                 icon: "cloud-upload"
               },
               {
@@ -73,17 +60,12 @@ export default {
                 icon: "cloud-upload"
               }
             ]
-          },
-          {
-            to: "/profile",
-            label: "Profile",
-            icon: "account-circle"
           }
         ],
         "About",
         [
           {
-            href: "",
+            href: "https://github.com/ricardomdesa/bufunfa-front-end",
             label: "About",
             icon: "help-circle"
           }
